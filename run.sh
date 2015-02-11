@@ -4,7 +4,7 @@ MODULE=${MODULE:-website}
 
 sed -i "s#module=website.wsgi:application#module=${MODULE}.wsgi:application#g" /opt/django/uwsgi.ini
 
-if [ ! -f "/opt/django/app/poll/manage.py" ]
+if [ ! -f "/opt/django/app/manage.py" ]
 then
 	echo "creating basic django project (module: ${MODULE})"
 	django-admin.py startproject ${MODULE} /opt/django/app/
@@ -20,5 +20,5 @@ echo "Running collectstatic..."
 
 # start supervisor
 echo "Starting supervisor"
-/usr/bin/supervisord
+/usr/bin/python /opt/django/app/manage.py runserver 0.0.0.0:80
 echo "Started."
