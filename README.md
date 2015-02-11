@@ -11,3 +11,4 @@ You can mount the application volume to run a specific application.  The default
 
 If there is not an app, it will create a default django project.
 # Poll
+docker run -itd -p 9966:80 -e MODULE=poll -v /vagrant/Poll/app/poll:/opt/django/app --name=poll poll

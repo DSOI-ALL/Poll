@@ -12,7 +12,7 @@ class IndexView(generic.ListView):
 
 	def get_queryset(self):
 		"""Return the last five published questions."""
-		return Question.objects.order_by('-pub_date')[:5]
+		return Question.objects.order_by('-pub_date')[:50]
 
 
 class DetailView(generic.DetailView):
@@ -37,4 +37,3 @@ def vote(request, question_id):
 		selected_choice.votes += 1
 		selected_choice.save()
 		return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
-

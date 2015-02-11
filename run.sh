@@ -12,7 +12,7 @@ fi
 
 ## start services, Syncdb, install fixtures, collect static
 echo "Running collectstatic..."
-/usr/bin/python /opt/django/app/manage.py collectstatic --noinput
+#/usr/bin/python /opt/django/app/manage.py collectstatic --noinput
 #echo "Synchronizing application database"
 #/usr/bin/python /opt/django/app/manage.py syncdb --noinput
 #echo "Loading bootstrap data..."
