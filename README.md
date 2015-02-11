@@ -1,14 +1,16 @@
-docker image for django (uwsgi) & nginx
-based off of stackbrew/ubuntu:12.04
+# Docker Poll Application
 
-To pull this image:
+## Requirements
 
-Example usage:
-`docker run -p 80:80 -d -e MODULE=myapp django-uwsgi-nginx`
+The vagrant machine that you created in the DevOps workshop.
 
-You can mount the application volume to run a specific application.  The default volume inside in the container is `/opt/django/app`.
-`docker run -p 80:80 -d -e MODULE=gangplank -v /vagrant/web-interface/webapp:/opt/django/app mbentley/ubuntu-django-uwsgi-nginx`
+## Steps
+1. Pull our repo into the root of the spring-petclinic directory
+    `git clone https://github.com/SLS-ALL/Poll.git`
 
-If there is not an app, it will create a default django project.
-# Poll
-docker run -itd -p 9966:80 -e MODULE=poll -v /vagrant/Poll/app/poll:/opt/django/app --name=poll poll
+2. `sudo -i`
+3. `cd /vagrant/Poll`
+4. `docker build -t poll .`
+5. `docker run -itd -p 9966:80 -e MODULE=poll -v /vagrant/Poll/app/poll:/opt/django/app --name=poll poll`
+6. Browse to <http://localhost:9966/polls>
+7. Answer the questions.  Sorry, there is not a back button with this demo.
